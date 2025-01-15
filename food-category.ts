@@ -1,9 +1,9 @@
-import express, { Request, Response } from "express";
-import { Schema, model, connect } from "mongoose";
+import express, { Request, Response, Router } from "express";
+import { FoodCategoryModel } from "./models";
 
 export const foodCategoryRouter = Router();
 
-foodCategoryRouter.post("/create", async (req: Request, res: Response) => {
+foodCategoryRouter.post("/", async (req: Request, res: Response) => {
   const { categoryName } = req.body;
   const newItem = await FoodCategoryModel.create({
     categoryName,

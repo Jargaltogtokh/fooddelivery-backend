@@ -3,6 +3,8 @@ import { configDotenv } from "dotenv";
 import { MongoClient } from "mongodb";
 import { Schema, model, connect } from "mongoose";
 import { deepStrictEqual } from "assert";
+import { foodCategoryRouter } from "./food-category";
+import { foodRouter } from "./food";
 
 const PORT = 8001;
 const app = express();
@@ -24,21 +26,8 @@ const connectMongoDB = async () => {
 
 connectMongoDB();
 
-app.use("/food-category/", foodCategoryRouter);
-app.use("/food/", foodRouter);
-
-const FOOD_CATEGORY_SCHEMA = new Schema(
-  {
-    categoryName: String,
-  },
-  { timestamps: true }
-);
-
-const FoodCategoryModel = model(
-  "FoodCategory",
-  FOOD_CATEGORY_SCHEMA,
-  "food-category"
-);
+app.use("/food-category", foodCategoryRouter);
+app.use("/food", foodRouter);
 
 // app.post("/food-category/create", async (req: Request, res: Response) => {
 //   const { categoryName } = req.body;
