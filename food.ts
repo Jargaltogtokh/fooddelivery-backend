@@ -5,10 +5,13 @@ import { FoodModel } from "./models";
 export const foodRouter = Router();
 
 foodRouter.post("/", async (req: Request, res: Response) => {
-  const { name, categoryId } = req.body;
+  const { name, categoryId, price, image, ingredients } = req.body;
   const newItem = await FoodModel.create({
     name,
     categoryId,
+    price,
+    image,
+    ingredients,
   });
 
   res.send({ message: "New food is created", newItem });

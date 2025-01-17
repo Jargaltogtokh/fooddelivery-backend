@@ -44,7 +44,7 @@ foodCategoryRouter.get("/:id", async (req: Request, res: Response) => {
   const { id } = req.params;
   const SearchedCategory = await FoodCategoryModel.find({ _id: id });
   if (SearchedCategory) {
-    res.json(SearchedCategory);
+    res.json(SearchedCategory[0]);
   }
 });
 
