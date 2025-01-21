@@ -1,5 +1,5 @@
 import express, { Request, Response, Router } from "express";
-import { Schema, model, connect } from "mongoose";
+import { Schema, model, connect, Types } from "mongoose";
 import { FoodModel } from "./models";
 
 export const foodRouter = Router();
@@ -61,6 +61,8 @@ foodRouter.get("/", async (req: Request, res: Response) => {
         categoryId: category,
       }
     : {};
+
+  console.log(filter);
 
   const data = await FoodModel.find(filter);
 

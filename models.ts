@@ -1,4 +1,4 @@
-import { Schema, model, connect } from "mongoose";
+import { Schema, model, connect, models } from "mongoose";
 
 const FOOD_CATEGORY_SCHEMA = new Schema(
   {
@@ -19,9 +19,9 @@ const FOOD_SCHEMA = new Schema(
     price: String,
     image: String,
     ingredients: String,
-    categoryId: { type: String, required: true },
+    categoryId: { type: Schema.Types.ObjectId, ref: FoodCategoryModel },
   },
   { timestamps: true }
 );
 
-export const FoodModel = model("Food", FOOD_SCHEMA);
+export const FoodModel = models["Food"] || model("Food", FOOD_SCHEMA);
