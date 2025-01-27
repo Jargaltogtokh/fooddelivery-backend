@@ -5,6 +5,7 @@ import { Schema, model, connect } from "mongoose";
 import { deepStrictEqual } from "assert";
 import { foodCategoryRouter } from "./food-category";
 import { foodRouter } from "./food";
+import { foodOrderRouter } from "./food-order";
 
 const PORT = 8001;
 const app = express();
@@ -28,6 +29,7 @@ connectMongoDB();
 
 app.use("/food-category", foodCategoryRouter);
 app.use("/food", foodRouter);
+app.use("/food-order", foodOrderRouter);
 
 // app.post("/food-category/create", async (req: Request, res: Response) => {
 //   const { categoryName } = req.body;
