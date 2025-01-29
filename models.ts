@@ -16,7 +16,7 @@ export const FoodCategoryModel = model(
 const FOOD_SCHEMA = new Schema(
   {
     name: String,
-    price: String,
+    price: Number,
     image: String,
     ingredients: String,
     categoryId: { type: Schema.Types.ObjectId, ref: FoodCategoryModel },
