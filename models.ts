@@ -21,6 +21,7 @@ const FOOD_SCHEMA = new Schema(
     ingredients: String,
     categoryId: { type: Schema.Types.ObjectId, ref: FoodCategoryModel },
   },
+
   { timestamps: true }
 );
 
