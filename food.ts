@@ -19,13 +19,11 @@ foodRouter.post("/", async (req: Request, res: Response) => {
 
 foodRouter.put("/:id", async (req: Request, res: Response) => {
   const { id } = req.params;
-  const { name } = req.body;
+  const newFood = req.body;
 
-  const UpdatedFood = await FoodModel.findByIdAndUpdate(
-    id,
-    { name },
-    { new: true }
-  );
+  const UpdatedFood = await FoodModel.findByIdAndUpdate(id, newFood, {
+    new: true,
+  });
   if (UpdatedFood) {
     res.json({
       message: "A food is updated successfully",
