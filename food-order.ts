@@ -6,7 +6,7 @@ export const foodOrderRouter = Router();
 
 foodOrderRouter.post("/", auth, async (req: Request, res: Response) => {
   const user = res.locals.userId;
-  const { foodOrderItems, totalPrices } = req.body;
+  const { foodOrderItems, totalPrices, address } = req.body;
 
   const order = { user, foodOrderItems, totalPrices };
   const newOrder = await FoodOrderModel.create(order);
